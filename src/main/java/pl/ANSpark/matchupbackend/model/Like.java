@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 
+
+
 @Entity
 @Table(name = "likes", uniqueConstraints = {@UniqueConstraint(columnNames = {"from_profile_id", "to_profile_id"})})
 @Data
