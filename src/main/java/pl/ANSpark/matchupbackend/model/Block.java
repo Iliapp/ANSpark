@@ -1,6 +1,5 @@
 package pl.ANSpark.matchupbackend.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,32 +8,29 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+
+
 @Entity
-@Table(name= "photos")
+@Table(name = "blocks", uniqueConstraints = {@UniqueConstraint(columnNames = {"blocker_profile_id", "blocked_profile_id"})
+})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
-
-
-
-public class Photo {
+public class Block {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "profile_id", nullable = false)
-    private Profile profile;
+    @JoinColumn(name = "blocker_profile_id", nullable = false)
+    private Profile blockerProfile;
 
-    @Column(nullable = false, length = 500)
-    private String url;
-
-    @Column(name = "order_index", nullable = false)
-    @Builder.Default
-    private Integer orderIndex = 0;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "blocked_profile_id", nullable = false)
+    private Profile blockedProfile;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
