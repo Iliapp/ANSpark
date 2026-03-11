@@ -20,7 +20,7 @@ import java.util.List;
 
 
 
-public class Match {
+public class  Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
