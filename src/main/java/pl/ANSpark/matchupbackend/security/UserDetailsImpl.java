@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-@Service
+
 public class UserDetailsImpl implements UserDetails {
     public UUID id;
     public String email;
